@@ -1,5 +1,25 @@
 <template>
-  <div>
-    <h1>This is the dashboard!</h1>
+  <div id="dashboard">
+    <v-data-table dense>
+      <v-data-table-header>
+        This is the header
+      </v-data-table-header>
+    </v-data-table>
   </div>
 </template>
+
+<script>
+export default {
+  name: "Dashboard",
+
+  data() {
+    return {};
+  },
+
+  computed: {},
+
+  methods: {},
+};
+</script>
+
+<style scoped></style>
