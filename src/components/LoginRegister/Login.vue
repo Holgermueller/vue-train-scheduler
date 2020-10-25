@@ -1,0 +1,75 @@
+<template>
+  <div id="login">
+    <v-layout row v-if="error">
+      <v-flex xs12 sm12 md12 lg12 xl12>
+        <app-alert
+          @dismissed="onDismissed"
+          :text="error.message || error"
+        ></app-alert>
+      </v-flex>
+    </v-layout>
+
+    <v-form ref="form">
+      <v-flex xs12 sm12 md12 lg12 xl12>
+        <v-text-field
+          v-model="email"
+          label="Email"
+          prepend-icon="mdi-account-circle"
+          outlined
+        ></v-text-field>
+      </v-flex>
+      <v-flex xs12 sm12 md12 lg12 xl12>
+        <v-text-field
+          v-model="password"
+          label="Password"
+          prepend-icon="mdi-lock"
+          outlined
+          :type="showPassword ? 'text' : 'password'"
+          :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+          @click:append="showPassword = !showPassword"
+        ></v-text-field>
+      </v-flex>
+    </v-form>
+
+    <v-divider></v-divider>
+    <v-card-actions>
+      <v-btn color="red" @click.prevent="clearLoginForm" class="white--text">
+        <span class="mdi mdi-close-circle"></span>Cancel
+      </v-btn>
+      <v-spacer></v-spacer>
+      <router-link
+        :to="{
+          name: 'Profile',
+          params: { currentUser: currentUser, userId: userId },
+        }"
+      >
+        <v-btn
+          color="blue"
+          class="white--text"
+          @click.prevent="checkLoginForm"
+          :loading="loading"
+          :disabled="loading"
+          >Submit</v-btn
+        >
+      </router-link>
+    </v-card-actions>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "LoginForm",
+
+  data() {
+    return {};
+  },
+
+  computed: {},
+
+  watch: {},
+
+  methods: {},
+};
+</script>
+
+<style scoped></style>
