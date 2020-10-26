@@ -1,5 +1,7 @@
 <template>
   <div id="dashboard">
+    <Clock />
+
     <v-data-table dense>
       <v-data-table-header>
         This is the header
@@ -9,8 +11,14 @@
 </template>
 
 <script>
+import Clock from "../components/DashComponents/Clock";
+
 export default {
   name: "Dashboard",
+
+  components: {
+    Clock,
+  },
 
   data() {
     return {};
