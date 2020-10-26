@@ -3,8 +3,11 @@ import App from "./App.vue";
 import vuetify from "./plugins/vuetify";
 import router from "./router";
 import { store } from "./store";
+import AlertCmp from "./components/shared/Alert.vue";
 
 Vue.config.productionTip = false;
+
+Vue.component("app-alert", AlertCmp);
 
 new Vue({
   vuetify,
