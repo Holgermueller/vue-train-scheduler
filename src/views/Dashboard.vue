@@ -22,4 +22,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#dashboard {
+  width: 85%;
+  margin: 8% auto;
+}
+</style>

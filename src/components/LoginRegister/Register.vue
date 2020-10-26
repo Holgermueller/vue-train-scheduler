@@ -100,7 +100,17 @@ export default {
     };
   },
 
-  computed: {},
+  computed: {
+    user() {
+      return this.$store.getters.user;
+    },
+    error() {
+      return this.$store.getters.error;
+    },
+    loading() {
+      return this.$store.getters.loading;
+    },
+  },
 
   watch: {},
 

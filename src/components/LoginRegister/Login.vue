@@ -61,10 +61,27 @@ export default {
   name: "LoginForm",
 
   data() {
-    return {};
+    return {
+      email: "",
+      password: "",
+      showPassword: false,
+      currentUser: false,
+      userId: null,
+      errorFromDom: "",
+    };
   },
 
-  computed: {},
+  computed: {
+    user() {
+      return this.$store.getters.user;
+    },
+    error() {
+      return this.$store.getters.error;
+    },
+    loading() {
+      return this.$store.getters.loading;
+    },
+  },
 
   watch: {},
 
