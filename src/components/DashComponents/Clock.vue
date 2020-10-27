@@ -5,6 +5,9 @@
         <h1>Current time:</h1>
       </legend>
       <h3>{{ currentDateTime() }}</h3>
+      <h3>
+        {{ currentTime() }}
+      </h3>
     </fieldset>
   </div>
 </template>
@@ -17,7 +20,15 @@ export default {
 
   methods: {
     currentDateTime() {
-      return moment().format("Do MMM YYYY");
+      return moment().format("ddd Do MMM YYYY");
+    },
+
+    currentTime() {
+      return moment().format("H:mm:ss A");
+    },
+
+    updateCurrentTime() {
+      setInterval(this.currentTime, 1000);
     },
   },
 };
