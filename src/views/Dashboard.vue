@@ -2,22 +2,24 @@
   <div id="dashboard">
     <Clock />
 
-    <v-data-table dense>
-      <v-data-table-header>
-        This is the header
-      </v-data-table-header>
-    </v-data-table>
+    <AddTrain />
+
+    <Schedule />
   </div>
 </template>
 
 <script>
 import Clock from "../components/DashComponents/Clock";
+import AddTrain from "../components/DashComponents/AddATrain";
+import Schedule from "../components/DashComponents/Schedule";
 
 export default {
   name: "Dashboard",
 
   components: {
     Clock,
+    AddTrain,
+    Schedule,
   },
 
   data() {
