@@ -2,7 +2,7 @@
   <div class="text-center">
     <v-dialog v-model="dialog" width="500">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn v-bind="attrs" v-on="on">
+        <v-btn v-bind="attrs" v-on="on" color="green" dark>
           Add A Train
         </v-btn>
       </template>
@@ -17,7 +17,8 @@
               v-model="destination"
               value="destination"
               id="destination"
-              placeholder="Destination"
+              label="Destination"
+              outlined
               clearable
             ></v-text-field>
             <v-text-field
@@ -25,7 +26,8 @@
               v-model="departureTime"
               value="departureTime"
               id="departureTime"
-              placeholder="Departure time"
+              label="Departure time"
+              outlined
               clearable
             ></v-text-field>
             <v-text-field
@@ -33,7 +35,8 @@
               v-model="departurePlace"
               value="departurePlace"
               id="departurePlace"
-              placeholder="Place of departure"
+              label="Place of departure"
+              outlined
               clearable
             ></v-text-field>
           </v-form>
@@ -47,10 +50,12 @@
               closeDialog();
               resetForm();
             "
+            color="red"
+            dark
             >Cancel</v-btn
           >
           <v-spacer></v-spacer>
-          <v-btn @click="submitTrip">Submit</v-btn>
+          <v-btn @click="submitTrip" color="blue" dark>Submit</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
