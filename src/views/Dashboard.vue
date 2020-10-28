@@ -2,7 +2,7 @@
   <div id="dashboard">
     <Clock />
 
-    <AddTrain />
+    <AddATrip />
 
     <Schedule />
   </div>
@@ -10,7 +10,7 @@
 
 <script>
 import Clock from "../components/DashComponents/Clock";
-import AddTrain from "../components/DashComponents/AddATrain";
+import AddATrip from "../components/DashComponents/AddATrip";
 import Schedule from "../components/DashComponents/Schedule";
 
 export default {
@@ -18,7 +18,7 @@ export default {
 
   components: {
     Clock,
-    AddTrain,
+    AddATrip,
     Schedule,
   },
 
