@@ -77,13 +77,12 @@ export default {
 
   methods: {
     submitTrip() {
-      let trip = {
+      this.$store.dispatch("addTrip", {
         destination: this.destination,
         departureTime: this.departureTime,
         departurePlace: this.departurePlace,
-      };
+      });
 
-      console.log(trip);
       this.resetForm();
       this.closeDialog();
     },

@@ -4,7 +4,29 @@
 
     <AddATrip />
 
-    <Schedule />
+    <v-layout row v-if="error">
+      <v-flex xs12 sm12 md12 lg12 xl12>
+        <app-alert
+          @dismissed="onDismissed"
+          :text="error.message || error"
+        ></app-alert>
+      </v-flex>
+    </v-layout>
+
+    <v-card>
+      <v-card-title>
+        Your upcoming trips:
+      </v-card-title>
+
+      <v-card-text>
+        <Schedule
+          v-for="(trip, index) in getTripList"
+          :key="trip.tripId"
+          :index="index"
+          :destination="trip.destination"
+        />
+      </v-card-text>
+    </v-card>
   </div>
 </template>
 
@@ -26,7 +48,22 @@ export default {
     return {};
   },
 
-  computed: {},
+  created() {
+    return this.$store.dispatch("getTripList");
+  },
+
+  computed: {
+    getTripList() {
+      return this.$store.getters.trips;
+    },
+
+    error() {
+      return this.$store.getters.error;
+    },
+    loading() {
+      return this.$store.getters.loading;
+    },
+  },
 
   methods: {},
 };
