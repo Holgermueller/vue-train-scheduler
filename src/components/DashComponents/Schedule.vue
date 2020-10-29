@@ -15,7 +15,7 @@
           </p>
 
           <v-card-actions>
-            <v-btn>Delete</v-btn>
+            <DeleteTrip :tripId="tripId" />
             <v-spacer></v-spacer>
             <v-btn>Edit</v-btn>
           </v-card-actions>
@@ -26,8 +26,14 @@
 </template>
 
 <script>
+import DeleteTrip from "./DeleteTrip";
+
 export default {
   name: "schedule",
+
+  components: {
+    DeleteTrip,
+  },
 
   props: {
     destination: {
@@ -38,6 +44,10 @@ export default {
     },
 
     departureTime: {
+      type: String,
+    },
+
+    tripId: {
       type: String,
     },
   },
