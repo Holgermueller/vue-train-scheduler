@@ -22,7 +22,7 @@ export default {
             let tripData = {
               tripId: doc.id,
               destination: doc.data().destination,
-              departureTime: doc.data().destination,
+              departureTime: doc.data().departureTime,
               departurePlace: doc.data().departurePlace,
             };
             tripsFromDb.push(tripData);

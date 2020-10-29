@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center">
+  <div id="addTrip" class="text-center">
     <v-dialog v-model="dialog" width="500">
       <template v-slot:activator="{ on, attrs }">
         <v-btn v-bind="attrs" v-on="on" color="green" dark>
@@ -97,3 +97,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+#addTrip {
+  margin: 8px;
+}
+</style>

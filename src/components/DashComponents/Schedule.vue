@@ -6,9 +6,19 @@
           {{ destination }}
         </v-expansion-panel-header>
         <v-expansion-panel-content>
-          some content
-          <v-divider vertical></v-divider>
-          more content
+          <p>
+            {{ departurePlace }}
+          </p>
+
+          <p>
+            {{ departureTime }}
+          </p>
+
+          <v-card-actions>
+            <v-btn>Delete</v-btn>
+            <v-spacer></v-spacer>
+            <v-btn>Edit</v-btn>
+          </v-card-actions>
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
@@ -23,6 +33,13 @@ export default {
     destination: {
       type: String,
     },
+    departurePlace: {
+      type: String,
+    },
+
+    departureTime: {
+      type: String,
+    },
   },
 
   data() {
@@ -31,8 +48,4 @@ export default {
 };
 </script>
 
-<style scoped>
-#schedule {
-  margin: 8px auto;
-}
-</style>
+<style scoped></style>

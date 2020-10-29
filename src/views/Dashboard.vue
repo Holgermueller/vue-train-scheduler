@@ -13,7 +13,7 @@
       </v-flex>
     </v-layout>
 
-    <v-card>
+    <v-card class="schedule-display">
       <v-card-title>
         Your upcoming trips:
       </v-card-title>
@@ -24,6 +24,8 @@
           :key="trip.tripId"
           :index="index"
           :destination="trip.destination"
+          :departurePlace="trip.departurePlace"
+          :departureTime="trip.departureTime"
         />
       </v-card-text>
     </v-card>
@@ -73,5 +75,8 @@ export default {
 #dashboard {
   width: 85%;
   margin: 8% auto;
+}
+.schedule-display {
+  margin: 16px auto;
 }
 </style>
