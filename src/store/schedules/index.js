@@ -11,7 +11,22 @@ export default {
     },
 
     DELETE_FROM_SCHEDULE(state, payload) {
-      state.trips.findIndex((item) => item.id === payload);
+      state.trips.findIndex((trip) => trip.id === payload);
+    },
+
+    UPDATE_TRIP_INFO(state, payload) {
+      const tripToUpdate = state.trips.find((thisTrip) => {
+        return thisTrip.id === payload.tripId;
+      });
+      if (payload.destination) {
+        tripToUpdate.destination = payload.editedDestination;
+      }
+      if (payload.departurePlace) {
+        tripToUpdate.departurePlace = payload.editedDeparturePlace;
+      }
+      if (payload.departureTime) {
+        tripToUpdate.departureTime = payload.editedDepartureTime;
+      }
     },
   },
 
@@ -69,6 +84,27 @@ export default {
         .delete()
         .then(() => {
           commit("DELETE_FROM_SCHEDULE");
+          commit("SET_LOADING", false);
+        })
+        .catch((err) => {
+          commit("SET_LOADING", true);
+          commit("SET_ERROR", err);
+        });
+    },
+
+    editTripInfo({ commit }, payload) {
+      commit("SET_LOADING", true);
+
+      firebase
+        .collection("trips")
+        .doc(payload.tripId)
+        .update({
+          destination: payload.editedDestination,
+          departureTime: payload.editedDepartureTime,
+          departurePlace: payload.editedDeparturePlace,
+        })
+        .then(() => {
+          commit("UPDATE_TRIP_INFO", payload);
           commit("SET_LOADING", false);
         })
         .catch((err) => {

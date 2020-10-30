@@ -20,7 +20,12 @@
         <v-card-actions>
           <v-btn @click="closeDialog">Cancel</v-btn>
           <v-spacer></v-spacer>
-          <v-btn @click.prevent="deleteTrip">Delete</v-btn>
+          <v-btn
+            @click.prevent="deleteTrip"
+            :loading="loading"
+            :disabled="loading"
+            >Delete</v-btn
+          >
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -45,6 +50,12 @@ export default {
     return {
       dialog: false,
     };
+  },
+
+  computed: {
+    loading() {
+      return this.$store.getters.loading;
+    },
   },
 
   methods: {

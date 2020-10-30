@@ -55,7 +55,14 @@
             >Cancel</v-btn
           >
           <v-spacer></v-spacer>
-          <v-btn @click="submitTrip" color="blue" dark>Submit</v-btn>
+          <v-btn
+            @click="submitTrip"
+            color="blue"
+            :loading="loading"
+            :disabled="loading"
+            dark
+            >Submit</v-btn
+          >
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -73,6 +80,12 @@ export default {
       departureTime: "",
       departurePlace: "",
     };
+  },
+
+  computed: {
+    loading() {
+      return this.$store.getters.loading;
+    },
   },
 
   methods: {
