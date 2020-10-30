@@ -8,9 +8,7 @@
       </template>
 
       <v-card>
-        <v-card-title>
-          Delete this trip?
-        </v-card-title>
+        <v-card-title> Delete this trip: {{ destination }}? </v-card-title>
 
         <v-card-text>
           <p>Are you sure you want to delete this trip?</p>
@@ -35,6 +33,10 @@ export default {
 
   props: {
     tripId: {
+      type: String,
+    },
+
+    destination: {
       type: String,
     },
   },

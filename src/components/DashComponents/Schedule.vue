@@ -15,9 +15,14 @@
           </p>
 
           <v-card-actions>
-            <DeleteTrip :tripId="tripId" />
+            <DeleteTrip :tripId="tripId" :destination="destination" />
             <v-spacer></v-spacer>
-            <v-btn>Edit</v-btn>
+            <EditTrip
+              :tripId="tripId"
+              :destination="destination"
+              :departurePlace="departurePlace"
+              :departureTime="departureTime"
+            />
           </v-card-actions>
         </v-expansion-panel-content>
       </v-expansion-panel>
@@ -27,12 +32,14 @@
 
 <script>
 import DeleteTrip from "./DeleteTrip";
+import EditTrip from "./EditTrip";
 
 export default {
   name: "schedule",
 
   components: {
     DeleteTrip,
+    EditTrip,
   },
 
   props: {

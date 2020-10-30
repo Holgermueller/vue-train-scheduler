@@ -3,12 +3,12 @@
     <v-dialog v-model="dialog" width="500">
       <template v-slot:activator="{ on, attrs }">
         <v-btn v-bind="attrs" v-on="on" color="green" dark>
-          Add A Train
+          Add A Trip
         </v-btn>
       </template>
 
       <v-card>
-        <v-card-title>Add A Train</v-card-title>
+        <v-card-title>Add A Trip</v-card-title>
 
         <v-card-text>
           <v-form ref="form">
