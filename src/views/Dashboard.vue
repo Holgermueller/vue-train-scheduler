@@ -18,6 +18,29 @@
         Your upcoming trips:
       </v-card-title>
 
+      <v-layout class="progress">
+        <v-flex class="tet-xs-center">
+          <v-progress-circular
+            indeterminate
+            class="primary--text"
+            :width="7"
+            :size="70"
+            v-if="loading"
+          ></v-progress-circular>
+        </v-flex>
+      </v-layout>
+
+      <div>
+        <v-layout row v-if="error">
+          <v-flex xs12 sm12 md12 lg12 xl12>
+            <app-alert
+              @dismissed="onDismissed"
+              :text="error.message || error"
+            ></app-alert>
+          </v-flex>
+        </v-layout>
+      </div>
+
       <v-card-text>
         <Schedule
           v-for="(trip, index) in getTripList"
@@ -76,6 +99,9 @@ export default {
 #dashboard {
   width: 85%;
   margin: 8% auto;
+}
+.progress {
+  margin: 1% auto;
 }
 .schedule-display {
   margin: 16px auto;
