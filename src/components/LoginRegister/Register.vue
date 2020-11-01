@@ -71,7 +71,7 @@
       <v-spacer></v-spacer>
       <v-btn
         color="blue"
-        @click.prevent="checkRegistrationData"
+        @click.prevent="registerUser"
         class="white--text"
         :loading="loading"
         :disabled="loading"
@@ -114,7 +114,23 @@ export default {
 
   watch: {},
 
-  methods: {},
+  methods: {
+    registerUser() {
+      this.$store.dispatch("registerUser", {
+        email: this.email,
+        password: this.password,
+        displayName: this.displayName,
+      });
+    },
+
+    clearFrom() {
+      this.$refs.form.reset();
+    },
+
+    onDismissed() {
+      this.$store.dispatch("clearError");
+    },
+  },
 };
 </script>
 

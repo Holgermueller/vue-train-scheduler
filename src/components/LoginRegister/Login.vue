@@ -55,7 +55,7 @@
         <v-btn
           color="blue"
           class="white--text"
-          @click.prevent="checkLoginForm"
+          @click.prevent="loginUser"
           :loading="loading"
           :disabled="loading"
           >Submit</v-btn
@@ -94,7 +94,22 @@ export default {
 
   watch: {},
 
-  methods: {},
+  methods: {
+    loginUser() {
+      this.$store.dispatch("login", {
+        email: this.email,
+        password: this.password,
+        userId: this.userId,
+        currentUser: this.currentUser,
+      });
+
+      this.clearForm();
+    },
+
+    clearForm() {
+      this.$refs.form.reset();
+    },
+  },
 };
 </script>
 
