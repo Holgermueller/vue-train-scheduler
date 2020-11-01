@@ -6,13 +6,11 @@
           {{ destination }}
         </v-expansion-panel-header>
         <v-expansion-panel-content>
-          <p>
-            {{ departurePlace }}
-          </p>
+          <p>Departing from: {{ departurePlace }}</p>
 
-          <p>
-            {{ departureTime }}
-          </p>
+          <p>Departing at: {{ departureTime }}</p>
+
+          <p>Departing in: time will appear here.</p>
 
           <v-card-actions>
             <DeleteTrip :tripId="tripId" :destination="destination" />

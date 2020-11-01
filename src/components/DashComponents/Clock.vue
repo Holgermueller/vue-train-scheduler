@@ -24,11 +24,14 @@ export default {
     },
 
     currentTime() {
-      return moment().format("H:mm:ss A");
+      let now = moment().format("h:mm:ss A");
+      return now;
     },
 
     updateCurrentTime() {
-      setInterval(this.currentTime, 1000);
+      setInterval(() => {
+        this.currentTime.add(1, "second");
+      }, 1000);
     },
   },
 };
