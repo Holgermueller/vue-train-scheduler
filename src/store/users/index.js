@@ -1,4 +1,4 @@
-import * as firebase from "firebase/app";
+import firebase from "firebase/app";
 import db from "../../firebase/fbInit";
 
 export default {
@@ -85,6 +85,15 @@ export default {
           commit("SET_LOADING", true);
           commit("SET_ERROR", err);
         });
+    },
+
+    autoSignIn({ commit }, payload) {
+      commit("SET_LOADING", false);
+      commit("SET_USER", {
+        userId: payload.uid,
+        email: payload.email,
+        displayName: payload.displayName,
+      });
     },
 
     deleteUser({ commit }) {

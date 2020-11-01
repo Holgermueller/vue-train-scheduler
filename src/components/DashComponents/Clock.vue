@@ -1,14 +1,18 @@
 <template>
   <div id="clock">
-    <fieldset>
-      <legend>
-        <h1>Current time:</h1>
-      </legend>
-      <h3>{{ currentDateTime() }}</h3>
-      <h3>
-        {{ currentTime() }}
-      </h3>
-    </fieldset>
+    <v-card class="clock">
+      <v-card-text>
+        <fieldset>
+          <legend>
+            <h1>Current time:</h1>
+          </legend>
+          <h3>{{ currentDateTime() }}</h3>
+          <h3>
+            {{ currentTime() }}
+          </h3>
+        </fieldset>
+      </v-card-text>
+    </v-card>
   </div>
 </template>
 
@@ -42,8 +46,11 @@ export default {
   margin: 8px auto;
   text-align: center;
 }
-fieldset {
+.clock {
   width: 55%;
+  margin: auto;
+}
+fieldset {
   border-radius: 8px;
   margin: auto;
 }

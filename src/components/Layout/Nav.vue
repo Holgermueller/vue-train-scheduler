@@ -9,19 +9,36 @@
           {{ link.title }}
         </v-btn>
       </div>
+
+      <v-spacer></v-spacer>
+
+      <Logout v-if="userIsAuthenticated" />
     </v-app-bar>
   </div>
 </template>
 
 <script>
+import Logout from "./Logout";
+
 export default {
   name: "Nav",
+
+  components: {
+    Logout,
+  },
 
   data() {
     return {};
   },
 
   computed: {
+    userIsAuthenticated() {
+      return (
+        this.$store.getters.user !== null &&
+        this.$store.getters.user !== undefined
+      );
+    },
+
     menulinks() {
       let menulinks = [
         {
