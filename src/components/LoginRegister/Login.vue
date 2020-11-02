@@ -42,8 +42,9 @@
 
     <v-divider></v-divider>
     <v-card-actions>
-      <v-btn color="red" @click.prevent="clearLoginForm" class="white--text">
-        <span class="mdi mdi-close-circle"></span>Cancel
+      <v-btn color="red" @click.prevent="clearLoginForm" dark>
+        <v-icon left>mdi-close-circle</v-icon>
+        Cancel
       </v-btn>
       <v-spacer></v-spacer>
       <router-link
@@ -54,11 +55,13 @@
       >
         <v-btn
           color="blue"
-          class="white--text"
+          dark
           @click.prevent="loginUser"
           :loading="loading"
           :disabled="loading"
-          >Submit</v-btn
+        >
+          <v-icon left>mdi-check-bold</v-icon>
+          Submit</v-btn
         >
       </router-link>
     </v-card-actions>
@@ -113,4 +116,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+a {
+  text-decoration: none;
+}
+</style>

@@ -3,6 +3,7 @@
     <v-dialog v-model="dialog" width="500">
       <template v-slot:activator="{ on, attrs }">
         <v-btn v-bind="attrs" v-on="on" color="green" dark>
+          <v-icon left>mdi-google-maps</v-icon>
           Add A Trip
         </v-btn>
       </template>
@@ -52,16 +53,20 @@
             "
             color="red"
             dark
-            >Cancel</v-btn
+          >
+            <v-icon left>mdi-cancel</v-icon>
+            Cancel</v-btn
           >
           <v-spacer></v-spacer>
           <v-btn
             @click="submitTrip"
-            color="blue"
+            color="green"
             :loading="loading"
             :disabled="loading"
             dark
-            >Submit</v-btn
+          >
+            <v-icon left>mdi-check-bold</v-icon>
+            Submit</v-btn
           >
         </v-card-actions>
       </v-card>

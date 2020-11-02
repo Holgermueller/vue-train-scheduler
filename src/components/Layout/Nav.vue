@@ -3,7 +3,7 @@
     <v-app-bar color="#190061" class="nav white--text" fixed dense>
       <div v-for="link in menulinks" :key="link.title" link>
         <v-btn color="#190061" :to="link.link" class="white--text">
-          <v-icon>
+          <v-icon left>
             {{ link.icon }}
           </v-icon>
           {{ link.title }}

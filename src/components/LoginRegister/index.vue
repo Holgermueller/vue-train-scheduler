@@ -4,7 +4,9 @@
       <v-tabs v-model="tab" fixed-tabs>
         <v-tab v-for="(form, index) in forms" :key="index">
           <h2>
-            <span :class="form.icon"></span>
+            <v-icon left>
+              {{ form.icon }}
+            </v-icon>
             {{ form.formName }}
           </h2>
         </v-tab>

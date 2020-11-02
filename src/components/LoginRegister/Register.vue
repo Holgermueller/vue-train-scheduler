@@ -60,23 +60,19 @@
     <v-divider></v-divider>
 
     <v-card-actions>
-      <v-btn
-        color="red"
-        @click.prevent="clearRegistrationForm"
-        class="white--text"
-      >
-        <span class="mdi mdi-close-circle white--text"></span>
+      <v-btn color="red" @click.prevent="clearRegistrationForm" dark>
+        <v-icon left>mdi-close-circle</v-icon>
         Cancel
       </v-btn>
       <v-spacer></v-spacer>
       <v-btn
         color="blue"
         @click.prevent="registerUser"
-        class="white--text"
+        dark
         :loading="loading"
         :disabled="loading"
       >
-        <span class="mdi mdi-check-bold white--text"></span>
+        <v-icon left>mdi-check-bold</v-icon>
         Register
       </v-btn>
     </v-card-actions>

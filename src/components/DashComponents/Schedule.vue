@@ -6,11 +6,20 @@
           {{ destination }}
         </v-expansion-panel-header>
         <v-expansion-panel-content>
-          <p>Departing from: {{ departurePlace }}</p>
+          <p>
+            <v-icon left>mdi-sign-direction</v-icon>
+            Departing from: {{ departurePlace }}
+          </p>
 
-          <p>Departing at: {{ departureTime }}</p>
+          <p>
+            <v-icon left>mdi-routes-clock</v-icon>
+            Departing at: {{ departureTime }}
+          </p>
 
-          <p>Departing in: time will appear here.</p>
+          <p>
+            <v-icon left>mdi-timer-sand</v-icon>
+            Departing in: time will appear here.
+          </p>
 
           <v-card-actions>
             <DeleteTrip :tripId="tripId" :destination="destination" />
