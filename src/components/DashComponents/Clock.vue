@@ -6,9 +6,9 @@
           <legend>
             <h1>Current time:</h1>
           </legend>
-          <h3>{{ currentDateTime() }}</h3>
+          <h3>{{ this.todaysDate }}</h3>
           <h3>
-            {{ currentTime() }}
+            {{ this.currentTime }}
           </h3>
         </fieldset>
       </v-card-text>
@@ -22,21 +22,23 @@ import moment from "moment";
 export default {
   name: "Clock",
 
+  data() {
+    return {
+      todaysDate: moment().format("ddd Do MMM YYYY"),
+      currentTime: "",
+    };
+  },
+
   methods: {
-    currentDateTime() {
-      return moment().format("ddd Do MMM YYYY");
-    },
-
-    currentTime() {
-      let now = moment().format("h:mm:ss A");
-      return now;
-    },
-
     updateCurrentTime() {
-      setInterval(() => {
-        this.currentTime.add(1, "second");
-      }, 1000);
+      this.currentTime = moment()
+        .add(1, "second")
+        .format("h:mm:ss A");
     },
+  },
+
+  mounted() {
+    setInterval(() => this.updateCurrentTime(), 1 * 1000);
   },
 };
 </script>
