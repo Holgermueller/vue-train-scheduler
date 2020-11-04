@@ -43,6 +43,10 @@
               outlined
               clearable
             ></v-text-field>
+            <v-date-picker
+              v-model="editedDepartureDate"
+              header-date-format="departureDate"
+            ></v-date-picker>
           </v-form>
         </v-card-text>
 
@@ -89,6 +93,10 @@ export default {
     tripId: {
       type: String,
     },
+
+    departureDate: {
+      type: String,
+    },
   },
 
   data() {
@@ -97,6 +105,7 @@ export default {
       editedDestination: this.destination,
       editedDeparturePlace: this.departurePlace,
       editedDepartureTime: this.departureTime,
+      editedDepartureDate: this.departureDate,
     };
   },
 
@@ -117,6 +126,7 @@ export default {
         editedDestination: this.editedDestination,
         editedDeparturePlace: this.editedDeparturePlace,
         editedDepartureTime: this.editedDepartureTime,
+        editedDepartureDate: this.editedDepartureDate,
       });
 
       this.closeDialog();

@@ -42,6 +42,7 @@ export default {
               tripId: doc.id,
               destination: doc.data().destination,
               departureTime: doc.data().departureTime,
+              departureDate: doc.data().departureDate,
               departurePlace: doc.data().departurePlace,
             };
             tripsFromDb.push(tripData);
@@ -65,6 +66,7 @@ export default {
           destination: payload.destination,
           departureTime: payload.departureTime,
           departurePlace: payload.departurePlace,
+          departureDate: payload.departureDate,
         })
         .then(() => {
           commit("SET_LOADING", false);
@@ -102,6 +104,7 @@ export default {
           destination: payload.editedDestination,
           departureTime: payload.editedDepartureTime,
           departurePlace: payload.editedDeparturePlace,
+          departureDate: payload.editedDepartureDate,
         })
         .then(() => {
           commit("UPDATE_TRIP_INFO", payload);

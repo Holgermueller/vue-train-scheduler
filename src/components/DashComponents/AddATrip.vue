@@ -24,15 +24,6 @@
             ></v-text-field>
             <v-text-field
               type="text"
-              v-model="departureTime"
-              value="departureTime"
-              id="departureTime"
-              label="Departure time"
-              outlined
-              clearable
-            ></v-text-field>
-            <v-text-field
-              type="text"
               v-model="departurePlace"
               value="departurePlace"
               id="departurePlace"
@@ -40,6 +31,16 @@
               outlined
               clearable
             ></v-text-field>
+            <v-text-field
+              type="text"
+              v-model="departureTime"
+              value="departureTime"
+              id="departureTime"
+              label="Departure time"
+              outlined
+              clearable
+            ></v-text-field>
+            <v-date-picker v-model="departureDate"></v-date-picker>
           </v-form>
         </v-card-text>
 
@@ -83,6 +84,7 @@ export default {
       dialog: false,
       destination: "",
       departureTime: "",
+      departureDate: "",
       departurePlace: "",
     };
   },
@@ -99,6 +101,7 @@ export default {
         destination: this.destination,
         departureTime: this.departureTime,
         departurePlace: this.departurePlace,
+        departureDate: this.departureDate,
       });
 
       this.resetForm();

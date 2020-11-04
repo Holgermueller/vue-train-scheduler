@@ -17,6 +17,11 @@
           </p>
 
           <p>
+            <v-icon left>mdi-calendar</v-icon>
+            Date of departure: {{ departureDate }}
+          </p>
+
+          <p>
             <v-icon left>mdi-timer-sand</v-icon>
             Departing in: time will appear here.
           </p>
@@ -29,6 +34,7 @@
               :destination="destination"
               :departurePlace="departurePlace"
               :departureTime="departureTime"
+              :departureDate="departureDate"
             />
           </v-card-actions>
         </v-expansion-panel-content>
@@ -62,6 +68,10 @@ export default {
     },
 
     tripId: {
+      type: String,
+    },
+
+    departureDate: {
       type: String,
     },
   },

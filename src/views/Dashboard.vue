@@ -49,6 +49,7 @@
           :destination="trip.destination"
           :departurePlace="trip.departurePlace"
           :departureTime="trip.departureTime"
+          :departureDate="trip.departureDate"
           :tripId="trip.tripId"
         />
       </v-card-text>
