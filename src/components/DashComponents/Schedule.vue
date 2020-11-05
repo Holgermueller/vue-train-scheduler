@@ -13,12 +13,12 @@
 
           <p>
             <v-icon left>mdi-routes-clock</v-icon>
-            Departing at: {{ departureTime }}
+            Departing at: {{ departureTime | formatDepartureTime }}
           </p>
 
           <p>
             <v-icon left>mdi-calendar</v-icon>
-            Date of departure: {{ departureDate }}
+            Date of departure: {{ departureDate | formatDepartureDate }}
           </p>
 
           <p>
@@ -46,6 +46,7 @@
 <script>
 import DeleteTrip from "./DeleteTrip";
 import EditTrip from "./EditTrip";
+import moment from "moment";
 
 export default {
   name: "schedule",
@@ -76,8 +77,14 @@ export default {
     },
   },
 
-  data() {
-    return {};
+  filters: {
+    formatDepartureTime(departureTime) {
+      return moment(departureTime, "HH:mm").format("h:mm A");
+    },
+
+    formatDepartureDate(departureDate) {
+      return moment(departureDate, "YYYY-MM-DD").format("ddd Do MMM YYYY");
+    },
   },
 };
 </script>
