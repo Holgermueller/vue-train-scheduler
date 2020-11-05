@@ -43,10 +43,10 @@
               outlined
               clearable
             ></v-text-field>
-            <v-date-picker
-              v-model="editedDepartureDate"
-              header-date-format="departureDate"
-            ></v-date-picker>
+
+            <v-time-picker ampm-in-title></v-time-picker>
+
+            <v-date-picker v-model="editedDepartureDate"></v-date-picker>
           </v-form>
         </v-card-text>
 

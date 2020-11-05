@@ -40,6 +40,9 @@
               outlined
               clearable
             ></v-text-field>
+
+            <v-time-picker ampm-in-title></v-time-picker>
+
             <v-date-picker v-model="departureDate"></v-date-picker>
           </v-form>
         </v-card-text>
