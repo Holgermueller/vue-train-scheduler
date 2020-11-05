@@ -33,20 +33,19 @@
               outlined
               clearable
             ></v-text-field>
-            <v-text-field
-              type="text"
+
+            <h5>New departure time:</h5>
+            <v-time-picker
               v-model="editedDepartureTime"
-              value="departureTime"
-              id="departureTime"
-              :label="departureTime"
-              :placeholder="departureTime"
-              outlined
-              clearable
-            ></v-text-field>
+              ampm-in-title
+              full-width
+            ></v-time-picker>
 
-            <v-time-picker ampm-in-title></v-time-picker>
-
-            <v-date-picker v-model="editedDepartureDate"></v-date-picker>
+            <h5>New departure date:</h5>
+            <v-date-picker
+              v-model="editedDepartureDate"
+              full-width
+            ></v-date-picker>
           </v-form>
         </v-card-text>
 
