@@ -86,12 +86,12 @@ export default {
     // },
 
     calculateTimeRemaining() {
-      let now = moment().format("hh:mm:ss");
-      let departureTime = moment(this.departureTime, "HH:mm").format(
-        "hh:mm:ss"
-      );
+      let now = moment().valueOf();
+      let departureTime = moment(this.departureTime, "HH:mm").valueOf();
       let timeRemaining = departureTime - now;
-      return timeRemaining;
+      let formattedTimeRemaining = moment(timeRemaining).format("HH:mm:ss");
+      // let countdownTimeRemaining =
+      return formattedTimeRemaining;
     },
   },
 
