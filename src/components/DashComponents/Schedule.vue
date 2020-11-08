@@ -23,7 +23,7 @@
 
           <p>
             <v-icon left>mdi-timer-sand</v-icon>
-            Departing in: {{ this.formattedTimeRemaining }}
+            Departing in: {{ this.daysRemaining }} days and {more info here}
           </p>
 
           <v-card-actions>
@@ -79,25 +79,38 @@ export default {
 
   data() {
     return {
-      formattedTimeRemaining: "",
+      daysRemaining: "",
+      timeRemaining: "",
     };
   },
 
   methods: {
-    calculateTimeRemaining() {
-      let now = moment().valueOf();
-      let departureTime = moment(this.departureTime, "HH:mm").valueOf();
-      let timeRemaining = departureTime - now;
+    calcDaysRemaining() {
+      let todaysDate = moment().format("YYYY-MM-DD");
+      let departureDate = moment(this.departureDate, "YYYY-MM-DD");
 
-      this.formattedTimeRemaining = moment(timeRemaining)
-        .subtract(1, "second")
-        .format("HH:mm:ss");
+      this.daysRemaining = departureDate.diff(todaysDate, "days");
     },
+
+    // mounted() {
+    //   setInterval(() => this.calcDaysRemaining(), 1 * 1000);
+    // },
+
+    // calculateTimeRemaining() {
+    //   let now = moment().valueOf();
+    //   let departureTime = moment(this.departureTime).valueOf();
+    //   let diff = departureTime - now;
+    //   let duration = moment.duration(diff, "seconds");
+
+    //   this.timeRemaining = moment(duration)
+    //     .subtract(1, "second")
+    //     .format("ss");
+    // },
   },
 
-  mounted() {
-    setInterval(() => this.calculateTimeRemaining(), 1 * 1000);
-  },
+  // mounted() {
+  //   setInterval(() => this.calculateTimeRemaining(), 1 * 1000);
+  // },
 
   filters: {
     formatDepartureTime(departureTime) {
