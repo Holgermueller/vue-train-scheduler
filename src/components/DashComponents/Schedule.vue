@@ -23,7 +23,7 @@
 
           <p>
             <v-icon left>mdi-timer-sand</v-icon>
-            Departing in: {{ calculateTimeRemaining() }}
+            Departing in: {{ this.formattedTimeRemaining }}
           </p>
 
           <v-card-actions>
@@ -77,22 +77,26 @@ export default {
     },
   },
 
+  data() {
+    return {
+      formattedTimeRemaining: "",
+    };
+  },
+
   methods: {
-    // calculateDaysRemaining() {
-    //    let now = moment();
-    //   let departureDate = this.departureDate;
-
-    //   return departureDate;
-    // },
-
     calculateTimeRemaining() {
       let now = moment().valueOf();
       let departureTime = moment(this.departureTime, "HH:mm").valueOf();
       let timeRemaining = departureTime - now;
-      let formattedTimeRemaining = moment(timeRemaining).format("HH:mm:ss");
-      // let countdownTimeRemaining =
-      return formattedTimeRemaining;
+
+      this.formattedTimeRemaining = moment(timeRemaining)
+        .subtract(1, "second")
+        .format("HH:mm:ss");
     },
+  },
+
+  mounted() {
+    setInterval(() => this.calculateTimeRemaining(), 1 * 1000);
   },
 
   filters: {
