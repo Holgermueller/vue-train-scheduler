@@ -23,7 +23,7 @@
 
           <p>
             <v-icon left>mdi-timer-sand</v-icon>
-            Departing in: {{ this.daysRemaining }} days and {more info here}
+            Departing in: {{ calcDaysRemaining() }} days and {more info here}
           </p>
 
           <v-card-actions>
@@ -89,7 +89,7 @@ export default {
       let todaysDate = moment().format("YYYY-MM-DD");
       let departureDate = moment(this.departureDate, "YYYY-MM-DD");
 
-      this.daysRemaining = departureDate.diff(todaysDate, "days");
+      return (this.daysRemaining = departureDate.diff(todaysDate, "days"));
     },
 
     // mounted() {
