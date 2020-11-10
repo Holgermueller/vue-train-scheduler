@@ -23,7 +23,8 @@
 
           <p>
             <v-icon left>mdi-timer-sand</v-icon>
-            Departing in: {{ calcDaysRemaining() }} days and {more info here}
+            Departing in: {{ calcDaysRemaining() }} day(s),
+            {{ calcHoursRemaining() }} hours
           </p>
 
           <v-card-actions>
@@ -81,6 +82,9 @@ export default {
     return {
       daysRemaining: "",
       timeRemaining: "",
+      hoursLeft: "",
+      minsLeft: "",
+      secsLeft: "",
     };
   },
 
@@ -92,20 +96,23 @@ export default {
       return (this.daysRemaining = departureDate.diff(todaysDate, "days"));
     },
 
-    // mounted() {
-    //   setInterval(() => this.calcDaysRemaining(), 1 * 1000);
-    // },
+    calcHoursRemaining() {
+      //let now = moment().format("YYYY-MM-DD HH:mm:ss");
+      let departureDate = moment(this.departureDate, "YYYY-MM-DD").format(
+        "YYYY-MM-DD"
+      );
+      let departureTime = moment(this.departureTime, "hh:mm:ss").format(
+        "hh:m:ss"
+      );
 
-    // calculateTimeRemaining() {
-    //   let now = moment().valueOf();
-    //   let departureTime = moment(this.departureTime).valueOf();
-    //   let diff = departureTime - now;
-    //   let duration = moment.duration(diff, "seconds");
+      let wholeDate = departureDate + " " + departureTime;
 
-    //   this.timeRemaining = moment(duration)
-    //     .subtract(1, "second")
-    //     .format("ss");
-    // },
+      return wholeDate;
+    },
+
+    calcMinsRemaining() {},
+
+    calcSecsRemaining() {},
   },
 
   // mounted() {
