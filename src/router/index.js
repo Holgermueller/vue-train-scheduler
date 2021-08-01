@@ -15,6 +15,9 @@ let router = new VueRouter({
       name: "Dashboard",
       component: Dashboard,
       props: true,
+      meta: {
+        requiresAuth: true,
+      },
     },
   ],
 });

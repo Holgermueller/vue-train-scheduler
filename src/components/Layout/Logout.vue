@@ -1,9 +1,9 @@
 <template>
   <div id="signOut">
-    <v-btn @click.prevent="logout">
-      <v-icon left>mdi-logout</v-icon>
-      Sign Out</v-btn
-    >
+    <v-btn @click.prevent="logout" color="#190061" dark>
+      Sign Out
+      <v-icon right>mdi-logout</v-icon>
+    </v-btn>
   </div>
 </template>
 
