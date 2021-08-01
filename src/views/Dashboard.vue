@@ -13,22 +13,10 @@
       </v-flex>
     </v-layout>
 
-    <v-card class="schedule-display">
+    <v-card class="schedule-display" :loading="loading">
       <v-card-title>
         Your upcoming trips:
       </v-card-title>
-
-      <v-layout class="progress">
-        <v-flex class="tet-xs-center">
-          <v-progress-circular
-            indeterminate
-            class="primary--text"
-            :width="7"
-            :size="70"
-            v-if="loading"
-          ></v-progress-circular>
-        </v-flex>
-      </v-layout>
 
       <div>
         <v-layout row v-if="error">

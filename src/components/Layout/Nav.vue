@@ -1,14 +1,22 @@
 <template>
   <div id="nav">
-    <v-app-bar color="#190061" class="nav white--text" fixed dense>
+    <v-app-bar color="#5F5756" class="nav white--text" fixed dense>
       <div v-for="link in menulinks" :key="link.title" link>
-        <v-btn color="#190061" :to="link.link" class="white--text">
+        <v-btn
+          color="#5F5756"
+          :to="link.link"
+          class="white--text"
+          elevation="0"
+        >
           <v-icon left>
             {{ link.icon }}
           </v-icon>
           {{ link.title }}
         </v-btn>
       </div>
+      <v-spacer></v-spacer>
+
+      <h3>Hello, {{ user.displayName }}</h3>
 
       <v-spacer></v-spacer>
 
@@ -32,6 +40,10 @@ export default {
   },
 
   computed: {
+    user() {
+      return this.$store.getters.user;
+    },
+
     userIsAuthenticated() {
       return (
         this.$store.getters.user !== null &&
