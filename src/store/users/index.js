@@ -75,7 +75,7 @@ export default {
         .then((user) => {
           const signedInUser = {
             email: user.user.email,
-            id: user.user.uid,
+            userId: user.user.uid,
             displayName: user.user.displayName,
           };
           commit("SET_LOADING", false);

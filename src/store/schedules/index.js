@@ -31,38 +31,42 @@ export default {
   },
 
   actions: {
-    getTripList({ commit }) {
+    getTripList({ commit, getters }) {
       commit("SET_LOADING", true);
 
-      firebase.collection("trips").onSnapshot(
-        (querySnapshot) => {
-          let tripsFromDb = [];
-          querySnapshot.forEach((doc) => {
-            let tripData = {
-              tripId: doc.id,
-              destination: doc.data().destination,
-              departureTime: doc.data().departureTime,
-              departureDate: doc.data().departureDate,
-              departurePlace: doc.data().departurePlace,
-            };
-            tripsFromDb.push(tripData);
-          });
-          commit("SET_TRIP_LIST", tripsFromDb);
-          commit("SET_LOADING", false);
-        },
-        (err) => {
-          commit("SET_LOADING", true);
-          commit("SET_ERROR", err);
-        }
-      );
+      firebase
+        .collection("trips")
+        .where("creatorId", "==", getters.user.userId)
+        .onSnapshot(
+          (querySnapshot) => {
+            let tripsFromDb = [];
+            querySnapshot.forEach((doc) => {
+              let tripData = {
+                tripId: doc.id,
+                destination: doc.data().destination,
+                departureTime: doc.data().departureTime,
+                departureDate: doc.data().departureDate,
+                departurePlace: doc.data().departurePlace,
+              };
+              tripsFromDb.push(tripData);
+            });
+            commit("SET_TRIP_LIST", tripsFromDb);
+            commit("SET_LOADING", false);
+          },
+          (err) => {
+            commit("SET_LOADING", true);
+            commit("SET_ERROR", err);
+          }
+        );
     },
 
-    addTrip({ commit }, payload) {
+    addTrip({ commit, getters }, payload) {
       commit("SET_LOADING", true);
 
       firebase
         .collection("trips")
         .add({
+          creatorId: getters.user.userId,
           destination: payload.destination,
           departureTime: payload.departureTime,
           departurePlace: payload.departurePlace,
