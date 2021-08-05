@@ -6,26 +6,27 @@
           {{ destination }}
         </v-expansion-panel-header>
         <v-expansion-panel-content>
-          <p>
-            <v-icon left>mdi-sign-direction</v-icon>
-            Departing from: {{ departurePlace }}
-          </p>
+          <v-card-text>
+            <p>
+              <v-icon left>mdi-sign-direction</v-icon>
+              Departing from: {{ departurePlace }}
+            </p>
 
-          <p>
-            <v-icon left>mdi-routes-clock</v-icon>
-            Departing at: {{ departureTime | formatDepartureTime }}
-          </p>
+            <p>
+              <v-icon left>mdi-routes-clock</v-icon>
+              Departing at: {{ departureTime | formatDepartureTime }}
+            </p>
 
-          <p>
-            <v-icon left>mdi-calendar</v-icon>
-            Date of departure: {{ departureDate | formatDepartureDate }}
-          </p>
+            <p>
+              <v-icon left>mdi-calendar</v-icon>
+              Date of departure: {{ departureDate | formatDepartureDate }}
+            </p>
 
-          <p>
-            <v-icon left>mdi-timer-sand</v-icon>
-            Departing in: {{ calcDaysRemaining() }},
-            {{ calcHoursRemaining() }}
-          </p>
+            <p>
+              <v-icon left>mdi-timer-sand</v-icon>
+              Departing in: {{ calcDaysRemaining() }}
+            </p>
+          </v-card-text>
 
           <v-card-actions>
             <DeleteTrip :tripId="tripId" :destination="destination" />
@@ -98,9 +99,8 @@ export default {
 
     calcHoursRemaining() {
       let now = moment().format("HH:mm");
-      let departureTime = moment(this.departureTime, "hh:mm");
+      let departureTime = moment(this.departureTime, "HH:mm").format("HH:mm");
 
-      //return departureTime.diff(now, "hours");
       return {
         now,
         departureTime,

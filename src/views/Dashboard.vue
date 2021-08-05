@@ -31,7 +31,7 @@
 
       <v-card-text>
         <Schedule
-          v-for="(trip, index) in getTripList"
+          v-for="(trip, index) in trips"
           :key="trip.tripId"
           :index="index"
           :destination="trip.destination"
@@ -68,7 +68,7 @@ export default {
   },
 
   computed: {
-    getTripList() {
+    trips() {
       return this.$store.getters.trips;
     },
 

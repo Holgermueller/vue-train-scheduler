@@ -53,6 +53,7 @@
               resetForm();
             "
             color="red"
+            elevation="0"
             dark
           >
             <v-icon left>mdi-cancel</v-icon>
@@ -64,6 +65,7 @@
             color="green"
             :loading="loading"
             :disabled="!formIsValid || loading"
+            elevation="0"
             dark
           >
             <v-icon left>mdi-check-bold</v-icon>

@@ -2,7 +2,7 @@
   <div class="text-center">
     <v-dialog v-model="dialog" width="500">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn v-bind="attrs" v-on="on" color="red" dark>
+        <v-btn v-bind="attrs" v-on="on" color="red" dark elevation="0">
           <v-icon left>mdi-delete</v-icon>
           Delete
         </v-btn>
