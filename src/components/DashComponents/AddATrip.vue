@@ -63,7 +63,7 @@
             @click="submitTrip"
             color="green"
             :loading="loading"
-            :disabled="loading"
+            :disabled="!formIsValid || loading"
             dark
           >
             <v-icon left>mdi-check-bold</v-icon>
@@ -92,6 +92,15 @@ export default {
   computed: {
     loading() {
       return this.$store.getters.loading;
+    },
+
+    formIsValid() {
+      return (
+        this.destination !== "" &&
+        this.departureTime !== "" &&
+        this.departureDate !== "" &&
+        this.departurePlace !== ""
+      );
     },
   },
 

@@ -97,8 +97,8 @@ export default {
     },
 
     calcHoursRemaining() {
-      let now = moment().format("hh:mm");
-      let departureTime = moment(this.departureTime, "hh:mm").format("HH:mm");
+      let now = moment().format("HH:mm");
+      let departureTime = moment(this.departureTime, "hh:mm");
 
       //return departureTime.diff(now, "hours");
       return {
