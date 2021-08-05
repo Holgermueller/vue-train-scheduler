@@ -45,9 +45,9 @@
 </template>
 
 <script>
+import moment from "moment";
 import DeleteTrip from "./DeleteTrip";
 import EditTrip from "./EditTrip";
-import moment from "moment";
 
 export default {
   name: "schedule",
@@ -79,13 +79,7 @@ export default {
   },
 
   data() {
-    return {
-      daysRemaining: "",
-      timeRemaining: "",
-      hoursLeft: "",
-      minsLeft: "",
-      secsLeft: "",
-    };
+    return {};
   },
 
   methods: {
@@ -98,23 +92,22 @@ export default {
       } else if (departureDate.diff(todaysDate, "days") < 1) {
         return "1 day";
       } else {
-        return (
-          (this.daysRemaining = departureDate.diff(todaysDate, "days")) +
-          " days"
-        );
+        return departureDate.diff(todaysDate, "days") + " days";
       }
     },
 
     calcHoursRemaining() {
       let now = moment().format("hh:mm");
-      let departureTime = moment(this.departureTime, "hh:mm");
+      let departureTime = moment(this.departureTime, "hh:mm").format("HH:mm");
 
-      return (this.timeRemaining = departureTime.diff(now, "hours")) + " hours";
+      //return departureTime.diff(now, "hours");
+      return {
+        now,
+        departureTime,
+      };
     },
 
     calcMinsRemaining() {},
-
-    calcSecsRemaining() {},
   },
 
   filters: {
