@@ -90,7 +90,7 @@ export default {
 
       if (departureDate.diff(todaysDate, "days") == 0) {
         return "0 days";
-      } else if (departureDate.diff(todaysDate, "days") < 1) {
+      } else if (departureDate.diff(todaysDate, "days") == 1) {
         return "1 day";
       } else if (departureDate.diff(todaysDate, "days") < 0) {
         this.deleteOldTrips();
