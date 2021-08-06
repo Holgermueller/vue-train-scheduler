@@ -88,10 +88,12 @@ export default {
       let todaysDate = moment().format("YYYY-MM-DD");
       let departureDate = moment(this.departureDate, "YYYY-MM-DD");
 
-      if (departureDate.diff(todaysDate, "days") < 0) {
+      if (departureDate.diff(todaysDate, "days") == 0) {
         return "0 days";
       } else if (departureDate.diff(todaysDate, "days") < 1) {
         return "1 day";
+      } else if (departureDate.diff(todaysDate, "days") < 0) {
+        this.deleteOldTrips();
       } else {
         return departureDate.diff(todaysDate, "days") + " days";
       }
@@ -107,7 +109,13 @@ export default {
       };
     },
 
-    calcMinsRemaining() {},
+    calcMinsRemaining() {
+      this.$store.dispatch("deleteTrip", {
+        tripId: this.tripId,
+      });
+    },
+
+    deleteOldTrips() {},
   },
 
   filters: {
