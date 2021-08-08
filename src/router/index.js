@@ -3,13 +3,18 @@ import VueRouter from "vue-router";
 import firebase from "firebase";
 import Home from "../views/index";
 import Dashboard from "../views/Dashboard";
+import ForgotPassword from "../views/ForgotPassword";
 
 Vue.use(VueRouter);
 
 let router = new VueRouter({
   mode: "history",
   routes: [
-    { path: "/", name: "Home", component: Home },
+    {
+      path: "/",
+      name: "Home",
+      component: Home,
+    },
 
     {
       path: "/dashboard",
@@ -19,6 +24,12 @@ let router = new VueRouter({
       meta: {
         requiresAuth: true,
       },
+    },
+
+    {
+      path: "/forgotPassword",
+      name: "ForgotPassword",
+      component: ForgotPassword,
     },
   ],
 });

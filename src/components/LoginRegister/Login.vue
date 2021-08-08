@@ -38,6 +38,11 @@
           @click:append="showPassword = !showPassword"
         ></v-text-field>
       </v-flex>
+      <v-flex xs12 sm12 md12 lg12 xl12>
+        <v-btn to="/forgotPassword" elevation="0" text>
+          Forgot Password?
+        </v-btn>
+      </v-flex>
     </v-form>
 
     <v-divider></v-divider>
