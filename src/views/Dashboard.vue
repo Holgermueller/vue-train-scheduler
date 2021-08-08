@@ -4,42 +4,24 @@
 
     <AddATrip />
 
-    <v-layout row v-if="error">
-      <v-flex xs12 sm12 md12 lg12 xl12>
-        <app-alert
-          @dismissed="onDismissed"
-          :text="error.message || error"
-        ></app-alert>
-      </v-flex>
-    </v-layout>
-
     <v-card class="schedule-display" :loading="loading">
       <v-card-title>
         Your upcoming trips:
       </v-card-title>
 
-      <div>
-        <v-layout row v-if="error">
-          <v-flex xs12 sm12 md12 lg12 xl12>
-            <app-alert
-              @dismissed="onDismissed"
-              :text="error.message || error"
-            ></app-alert>
-          </v-flex>
-        </v-layout>
-      </div>
-
       <v-card-text>
-        <Schedule
-          v-for="(trip, index) in trips"
-          :key="trip.tripId"
-          :index="index"
-          :destination="trip.destination"
-          :departurePlace="trip.departurePlace"
-          :departureTime="trip.departureTime"
-          :departureDate="trip.departureDate"
-          :tripId="trip.tripId"
-        />
+        <div>
+          <v-layout row v-if="error">
+            <v-flex xs12 sm12 md12 lg12 xl12>
+              <app-alert
+                @dismissed="onDismissed"
+                :text="error.message || error"
+              ></app-alert>
+            </v-flex>
+          </v-layout>
+        </div>
+
+        <Schedule :trips="trips" />
       </v-card-text>
     </v-card>
   </div>
@@ -59,10 +41,6 @@ export default {
     Schedule,
   },
 
-  data() {
-    return {};
-  },
-
   created() {
     return this.$store.dispatch("getTripList");
   },
@@ -79,8 +57,6 @@ export default {
       return this.$store.getters.loading;
     },
   },
-
-  methods: {},
 };
 </script>
 

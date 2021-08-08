@@ -20,23 +20,19 @@
 
       <v-spacer></v-spacer>
 
-      <Logout v-if="userIsAuthenticated" />
+      <LogoutButton v-if="userIsAuthenticated" />
     </v-app-bar>
   </div>
 </template>
 
 <script>
-import Logout from "./Logout";
+import LogoutButton from "./Logout";
 
 export default {
   name: "Nav",
 
   components: {
-    Logout,
-  },
-
-  data() {
-    return {};
+    LogoutButton,
   },
 
   computed: {

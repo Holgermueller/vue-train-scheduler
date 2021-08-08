@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: "Logout",
+  name: "LogoutButton",
 
   computed: {
     loading() {
@@ -25,5 +25,3 @@ export default {
   },
 };
 </script>
-
-<style scoped></style>

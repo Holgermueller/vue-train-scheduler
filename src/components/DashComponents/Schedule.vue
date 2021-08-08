@@ -1,42 +1,46 @@
 <template>
   <div id="schedule">
     <v-expansion-panels focusable inset>
-      <v-expansion-panel>
+      <v-expansion-panel
+        v-for="(trip, index) in trips"
+        :index="index"
+        :key="trip.tripId"
+      >
         <v-expansion-panel-header>
-          {{ destination }}
+          {{ trip.destination }}
         </v-expansion-panel-header>
         <v-expansion-panel-content>
           <v-card-text>
             <p>
               <v-icon left>mdi-sign-direction</v-icon>
-              Departing from: {{ departurePlace }}
+              Departing from: {{ trip.departurePlace }}
             </p>
 
             <p>
               <v-icon left>mdi-routes-clock</v-icon>
-              Departing at: {{ departureTime | formatDepartureTime }}
+              Departing at: {{ trip.departureTime | formatDepartureTime }}
             </p>
 
             <p>
               <v-icon left>mdi-calendar</v-icon>
-              Date of departure: {{ departureDate | formatDepartureDate }}
+              Date of departure: {{ trip.departureDate | formatDepartureDate }}
             </p>
 
-            <p>
-              <v-icon left>mdi-timer-sand</v-icon>
-              Departing in: {{ calcDaysRemaining() }}
-            </p>
+            <TimeRemainingDisplay
+              :tripId="trip.tripId"
+              :departureDate="trip.departureDate"
+            />
           </v-card-text>
 
           <v-card-actions>
-            <DeleteTrip :tripId="tripId" :destination="destination" />
+            <DeleteTrip :tripId="trip.tripId" :destination="trip.destination" />
             <v-spacer></v-spacer>
             <EditTrip
-              :tripId="tripId"
-              :destination="destination"
-              :departurePlace="departurePlace"
-              :departureTime="departureTime"
-              :departureDate="departureDate"
+              :tripId="trip.tripId"
+              :destination="trip.destination"
+              :departurePlace="trip.departurePlace"
+              :departureTime="trip.departureTime"
+              :departureDate="trip.departureDate"
             />
           </v-card-actions>
         </v-expansion-panel-content>
@@ -47,6 +51,7 @@
 
 <script>
 import moment from "moment";
+import TimeRemainingDisplay from "./TimeRemainingDisplay.vue";
 import DeleteTrip from "./DeleteTrip";
 import EditTrip from "./EditTrip";
 
@@ -54,68 +59,16 @@ export default {
   name: "schedule",
 
   components: {
+    TimeRemainingDisplay,
     DeleteTrip,
     EditTrip,
   },
 
   props: {
-    destination: {
-      type: String,
+    trips: {
+      type: Array,
+      required: true,
     },
-    departurePlace: {
-      type: String,
-    },
-
-    departureTime: {
-      type: String,
-    },
-
-    tripId: {
-      type: String,
-    },
-
-    departureDate: {
-      type: String,
-    },
-  },
-
-  data() {
-    return {};
-  },
-
-  methods: {
-    calcDaysRemaining() {
-      let todaysDate = moment().format("YYYY-MM-DD");
-      let departureDate = moment(this.departureDate, "YYYY-MM-DD");
-
-      if (departureDate.diff(todaysDate, "days") == 0) {
-        return "0 days";
-      } else if (departureDate.diff(todaysDate, "days") == 1) {
-        return "1 day";
-      } else if (departureDate.diff(todaysDate, "days") < 0) {
-        this.deleteOldTrips();
-      } else {
-        return departureDate.diff(todaysDate, "days") + " days";
-      }
-    },
-
-    calcHoursRemaining() {
-      let now = moment().format("HH:mm");
-      let departureTime = moment(this.departureTime, "HH:mm").format("HH:mm");
-
-      return {
-        now,
-        departureTime,
-      };
-    },
-
-    calcMinsRemaining() {
-      this.$store.dispatch("deleteTrip", {
-        tripId: this.tripId,
-      });
-    },
-
-    deleteOldTrips() {},
   },
 
   filters: {
@@ -129,5 +82,3 @@ export default {
   },
 };
 </script>
-
-<style scoped></style>
