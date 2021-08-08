@@ -16,15 +16,10 @@
               Departing from: {{ trip.departurePlace }}
             </p>
 
-            <p>
-              <v-icon left>mdi-routes-clock</v-icon>
-              Departing at: {{ trip.departureTime | formatDepartureTime }}
-            </p>
-
-            <p>
-              <v-icon left>mdi-calendar</v-icon>
-              Date of departure: {{ trip.departureDate | formatDepartureDate }}
-            </p>
+            <DepartureTimeDisplay
+              :departureTime="trip.departureTime"
+              :departureDate="trip.departureDate"
+            />
 
             <TimeRemainingDisplay
               :tripId="trip.tripId"
@@ -50,7 +45,7 @@
 </template>
 
 <script>
-import moment from "moment";
+import DepartureTimeDisplay from "./DepartureTimeDisplay.vue";
 import TimeRemainingDisplay from "./TimeRemainingDisplay.vue";
 import DeleteTrip from "./DeleteTrip";
 import EditTrip from "./EditTrip";
@@ -59,6 +54,7 @@ export default {
   name: "schedule",
 
   components: {
+    DepartureTimeDisplay,
     TimeRemainingDisplay,
     DeleteTrip,
     EditTrip,
@@ -68,16 +64,6 @@ export default {
     trips: {
       type: Array,
       required: true,
-    },
-  },
-
-  filters: {
-    formatDepartureTime(departureTime) {
-      return moment(departureTime, "HH:mm").format("h:mm A");
-    },
-
-    formatDepartureDate(departureDate) {
-      return moment(departureDate, "YYYY-MM-DD").format("ddd Do MMM YYYY");
     },
   },
 };

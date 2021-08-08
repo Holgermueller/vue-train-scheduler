@@ -26,6 +26,12 @@ export default {
   },
 
   methods: {
+    deleteOldTrips() {
+      this.$store.dispatch("deleteTrip", {
+        tripId: this.tripId,
+      });
+    },
+
     calcDaysRemaining() {
       let todaysDate = moment().format("YYYY-MM-DD");
       let departureDate = moment(this.departureDate, "YYYY-MM-DD");
@@ -35,18 +41,11 @@ export default {
       } else if (departureDate.diff(todaysDate, "days") == 1) {
         return "1 day";
       } else if (departureDate.diff(todaysDate, "days") == 0) {
-        return "0 days";
+        return "Today";
       } else {
         this.deleteOldTrips();
       }
     },
-  },
-
-  deleteOldTrips() {
-    let tripId = this.tripId;
-    this.$store.dispatch("deleteTrip", {
-      tripId: tripId,
-    });
   },
 };
 </script>
