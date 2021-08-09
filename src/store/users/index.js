@@ -127,6 +127,21 @@ export default {
           commit("SET_ERROR", err);
         });
     },
+
+    forgotPassword({ commit }, payload) {
+      commit("SET_LOADING", true);
+
+      firebase
+        .auth()
+        .sendPasswordResetEmail(payload.email)
+        .then(() => {
+          commit("SET_LOADING", false);
+        })
+        .catch((err) => {
+          commit("SET_LOADING", true);
+          commit("SET_ERROR", err);
+        });
+    },
   },
 
   getters: {

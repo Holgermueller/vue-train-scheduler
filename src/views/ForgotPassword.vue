@@ -31,22 +31,34 @@
         <p v-if="success" class="success-message">
           {{ success }}
         </p>
+
+        <v-btn to="/" elevation="0" color="blue" dark
+          >I don't have an account</v-btn
+        >
       </v-card-text>
 
       <v-card-actions>
-        <v-btn to="/" @click.prevent="clearForm" elevation="0" color="red" dark>
+        <v-btn
+          id="backToMain"
+          to="/"
+          @click.prevent="clearForm"
+          elevation="0"
+          color="red"
+          dark
+        >
           <v-icon left>mdi-cancel</v-icon>
           cancel</v-btn
         >
         <v-spacer></v-spacer>
         <v-btn
+          id="submitEmail"
           @click.prevent="sendEmail"
           elevation="0"
           color="blue"
           dark
           :loading="loading"
           :disabled="loading || !formIsValid"
-          >submit
+          >Reset Password
           <v-icon right>mdi-login</v-icon>
         </v-btn>
       </v-card-actions>
@@ -87,6 +99,10 @@ export default {
     sendEmail() {
       this.success =
         "Thank you for submitting your email. If it's in our database we'll send you an email with a reset link.";
+
+      this.$store.dispatch("forgotPassword", {
+        email: this.email,
+      });
 
       this.clearForm();
     },
