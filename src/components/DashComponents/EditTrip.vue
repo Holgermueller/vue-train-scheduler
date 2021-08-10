@@ -23,6 +23,7 @@
               outlined
               clearable
             ></v-text-field>
+            
             <v-text-field
               type="text"
               v-model="editedDeparturePlace"

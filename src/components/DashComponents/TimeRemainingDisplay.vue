@@ -2,7 +2,7 @@
   <div id="timeRemaining">
     <p>
       <v-icon left>mdi-timer-sand</v-icon>
-      Departing in: {{ calcDaysRemaining() }}
+      Departing: {{ calcDaysRemaining() }}
     </p>
   </div>
 </template>
@@ -37,15 +37,17 @@ export default {
       let departureDate = moment(this.departureDate, "YYYY-MM-DD");
 
       if (departureDate.diff(todaysDate, "days") > 1) {
-        return departureDate.diff(todaysDate, "days") + " days";
+        return "in " + departureDate.diff(todaysDate, "days") + " days";
       } else if (departureDate.diff(todaysDate, "days") == 1) {
-        return "1 day";
+        return "in " + "1 day";
       } else if (departureDate.diff(todaysDate, "days") == 0) {
         return "Today";
       } else {
         this.deleteOldTrips();
       }
     },
+
+    calcHoursRemaining() {},
   },
 };
 </script>
