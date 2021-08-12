@@ -2,7 +2,7 @@
   <div id="timeRemaining">
     <p>
       <v-icon left>mdi-timer-sand</v-icon>
-      Departing: {{ calcDaysRemaining() }}
+      Departing: {{ calcDaysRemaining }}, {{ calcHoursRemaining() }}
     </p>
   </div>
 </template>
@@ -23,6 +23,11 @@ export default {
       type: String,
       required: true,
     },
+
+    departureTime: {
+      type: String,
+      required: true,
+    },
   },
 
   methods: {
@@ -32,6 +37,15 @@ export default {
       });
     },
 
+    calcHoursRemaining() {
+      let now = moment().format("hh");
+      let departureHour = moment(this.departureTime, "hh");
+
+      return departureHour.diff(now, "hours");
+    },
+  },
+
+  computed: {
     calcDaysRemaining() {
       let todaysDate = moment().format("YYYY-MM-DD");
       let departureDate = moment(this.departureDate, "YYYY-MM-DD");
@@ -39,15 +53,13 @@ export default {
       if (departureDate.diff(todaysDate, "days") > 1) {
         return "in " + departureDate.diff(todaysDate, "days") + " days";
       } else if (departureDate.diff(todaysDate, "days") == 1) {
-        return "in " + "1 day";
+        return "in 1 day";
       } else if (departureDate.diff(todaysDate, "days") == 0) {
         return "Today";
       } else {
-        this.deleteOldTrips();
+        return this.deleteOldTrips();
       }
     },
-
-    calcHoursRemaining() {},
   },
 };
 </script>

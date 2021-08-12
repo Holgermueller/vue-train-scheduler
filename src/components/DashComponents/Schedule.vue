@@ -24,6 +24,7 @@
             <TimeRemainingDisplay
               :tripId="trip.tripId"
               :departureDate="trip.departureDate"
+              :departureTime="trip.departureTime"
             />
           </v-card-text>
 
