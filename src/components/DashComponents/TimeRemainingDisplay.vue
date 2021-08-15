@@ -2,7 +2,7 @@
   <div id="timeRemaining">
     <p>
       <v-icon left>mdi-timer-sand</v-icon>
-      Departing: {{ calcDaysRemaining }}, {{ calcHoursRemaining() }}
+      Departing: {{ calcDaysRemaining }}, {{ calcHoursRemaining }}
     </p>
   </div>
 </template>
@@ -37,12 +37,7 @@ export default {
       });
     },
 
-    calcHoursRemaining() {
-      let now = moment().format("hh");
-      let departureHour = moment(this.departureTime, "hh");
-
-      return departureHour.diff(now, "hours");
-    },
+    calcMinutesRemaining() {},
   },
 
   computed: {
@@ -54,8 +49,19 @@ export default {
         return "in " + departureDate.diff(todaysDate, "days") + " days";
       } else if (departureDate.diff(todaysDate, "days") == 1) {
         return "in 1 day";
-      } else if (departureDate.diff(todaysDate, "days") == 0) {
+      } else {
         return "Today";
+      }
+    },
+
+    calcHoursRemaining() {
+      let now = moment.utc();
+      let departureHour = moment.utc(this.departureTime, "hh");
+
+      if (departureHour.diff(now, "hours") > 1) {
+        return departureHour.diff(now, "hours") + " hours";
+      } else if (departureHour.diff(now, "hours") == 1) {
+        return "in 1 hour";
       } else {
         return this.deleteOldTrips();
       }
