@@ -4,6 +4,10 @@
       <v-icon left>mdi-timer-sand</v-icon>
       Departing: {{ calcDaysRemaining }}, {{ calcHoursRemaining }}
     </p>
+
+    <p>
+      {{ testFunction() }}
+    </p>
   </div>
 </template>
 
@@ -37,7 +41,15 @@ export default {
       });
     },
 
-    calcMinutesRemaining() {},
+    testFunction() {
+      let now = moment.utc();
+      let departureDate = this.departureDate;
+      let departureTime = this.departureTime;
+
+      let dateTime = moment(departureDate + departureTime, "YYYY-MM-DDLT");
+
+      return dateTime.diff(now);
+    },
   },
 
   computed: {
@@ -60,10 +72,8 @@ export default {
 
       if (departureHour.diff(now, "hours") > 1) {
         return departureHour.diff(now, "hours") + " hours";
-      } else if (departureHour.diff(now, "hours") == 1) {
-        return "in 1 hour";
       } else {
-        return this.deleteOldTrips();
+        return "in 1 hour";
       }
     },
   },
