@@ -60,25 +60,27 @@ export default {
       } else if (days == 0 && hours == 0 && minutes == 0) {
         return "Time's up!!";
       } else if (days == 1 && hours == 1 && minutes == 1) {
-        return days + " day " + hours + " hour " + minutes + " minute";
+        return days + " day, " + hours + " hour, " + minutes + " minute";
       } else if (days == 0 && hours == 0) {
         return minutes + " minutes";
+      } else if (days == 0 && minutes == 0) {
+        return hours + " hours";
       } else if (days == 1 && hours == 1) {
-        return days + " day " + hours + " hour " + minutes + " minutes";
-      } else if (days == 0) {
-        return hours + " hours " + minutes + " minutes";
+        return days + " day, " + hours + " hour, " + minutes + " minutes";
+      } else if (days == 0 || days < 0) {
+        return hours + " hours, " + minutes + " minutes";
       } else if (days == 1) {
-        return days + " day " + hours + " hours " + minutes + " minutes";
-      } else if (hours == 0) {
-        return days + " days " + minutes + " minutes";
+        return days + " day, " + hours + " hours, " + minutes + " minutes";
+      } else if (hours == 0 || hours < 0) {
+        return days + " days, " + minutes + " minutes";
       } else if (hours == 1) {
-        return days + " days " + hours + " hour " + minutes + " minutes";
-      } else if (minutes == 0) {
-        return days + " days " + hours + " hours ";
+        return days + " days, " + hours + " hour, " + minutes + " minutes";
+      } else if (minutes == 0 || minutes < 0) {
+        return days + " days, " + hours + " hours ";
       } else if (minutes == 1) {
-        return days + " days " + hours + " hours " + minutes + " minute";
+        return days + " days, " + hours + " hours, " + minutes + " minute";
       } else {
-        return days + " days " + hours + " hours " + minutes + " minutes";
+        return days + " days, " + hours + " hours, " + minutes + " minutes";
       }
     },
   },
