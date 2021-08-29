@@ -13,7 +13,7 @@
           <v-card-text>
             <p>
               <v-icon left>mdi-sign-direction</v-icon>
-              Departing from: {{ trip.departurePlace }}
+              Departing from: {{ trip.departurePlace.toUpperCase() }}
             </p>
 
             <DepartureTimeDisplay

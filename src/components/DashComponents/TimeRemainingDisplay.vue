@@ -36,6 +36,10 @@ export default {
         tripId: this.tripId,
       });
     },
+
+    stopTimer() {
+      clearInterval();
+    },
   },
 
   computed: {
@@ -56,9 +60,9 @@ export default {
       duration.subtract(moment.duration(minutes, "minutes"));
 
       if (days < 0 && hours < 0 && minutes < 0) {
-        return "Time's past up!!";
+        return clearInterval(days, hours, minutes), "Time's past up!!";
       } else if (days == 0 && hours == 0 && minutes == 0) {
-        return "Time's up!!";
+        return clearInterval(days, hours, minutes), "Time's up!!";
       } else if (days == 1 && hours == 1 && minutes == 1) {
         return days + " day, " + hours + " hour, " + minutes + " minute";
       } else if (days == 0 && hours == 0) {
