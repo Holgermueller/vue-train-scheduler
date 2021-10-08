@@ -122,6 +122,9 @@ export default {
 
     clearForm() {
       this.$refs.form.reset();
+      this.email = "";
+      this.password = "";
+      this.errorFromDom = "";
     },
   },
 };

@@ -127,6 +127,10 @@ export default {
 
     clearFrom() {
       this.$refs.form.reset();
+      this.displayName = "";
+      this.email = "";
+      this.password = "";
+      this.confirmPassword = "";
     },
 
     onDismissed() {
